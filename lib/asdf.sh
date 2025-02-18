@@ -38,7 +38,7 @@ install_asdf() {
 
   echo "Installing asdf..."
 
-  curl -fsSL https://github.com/asdf-vm/asdf/releases/download/v$1/asdf-v$1-$PLATFORM-$ARCH.tar.gz \
+  curl -fsSL "https://github.com/asdf-vm/asdf/releases/download/v${1}/asdf-v${1}-${PLATFORM}-${ARCH}.tar.gz" \
        -o /tmp/asdf.tar.gz
 
   if [ $? -ne 0 ]; then

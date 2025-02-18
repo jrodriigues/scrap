@@ -32,6 +32,15 @@ case $1 in
     fi
     install_fzf $2
     ;;
+  "lazygit")
+    if [ -f $SCRAP_HOME/lib/lazygit.sh ]; then
+      . "$SCRAP_HOME/lib/lazygit.sh"
+    else
+      echo "File $SCRAP_HOME/lib/lazygit.sh not found."
+      exit 1
+    fi
+    install_lazygit $2
+    ;;
 esac
     
 exit $?
