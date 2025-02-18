@@ -1,6 +1,10 @@
 #!/bin/bash
 
-SCRAP_HOME="~/scrap"
+# Ensure SCRAP_HOME is set
+if [ -z "$SCRAP_HOME" ]; then
+  echo "SCRAP_HOME is not set. Please set it to the appropriate directory."
+  exit 1
+fi
 
 case $1 in
   "-h"|"--help")
@@ -11,11 +15,21 @@ case $1 in
     """
     ;;
   "asdf")
-    source /home/jrodr/scrap/lib/asdf.sh
+    if [ -f $SCRAP_HOME/lib/asdf.sh ]; then
+      . "$SCRAP_HOME/lib/asdf.sh"
+    else
+      echo "File $SCRAP_HOME/lib/asdf.sh not found."
+      exit 1
+    fi
     install_asdf $2
     ;;
   "fzf")
-    source /home/jrodr/scrap/lib//fzf.sh
+    if [ -f $SCRAP_HOME/lib/fzf.sh ]; then
+      . "$SCRAP_HOME/lib/fzf.sh"
+    else
+      echo "File $SCRAP_HOME/lib/fzf.sh not found."
+      exit 1
+    fi
     install_fzf $2
     ;;
 esac
